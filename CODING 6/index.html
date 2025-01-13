@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sesi 6 Cuy University</title>
+    <link href="style.css" rel="stylesheet" />
+</head>
+<body>
+    <div class="container">
+        <nav>
+            <a onclick="reRender()" id="home">HOME</a>
+            <a onclick="darkMode()" id="mode">MODE</a>
+            <a onclick="lightMode()" id="terang">MODE TERANG</a>
+        </nav>
+        <h1>Sesi 6 Cuy University</h1>
+        <p class="info" id="info"></p>
+    </div>
+
+    <!-- Function -->
+    <script>
+        let body = document.body;
+        let info =  document.getElementById("info");
+        let mode =  document.getElementById("mode");
+        let home =  document.getElementById("home");
+        let gelap =  document.getElementById("gelap");
+
+        const darkLimit = 5;
+        let darkCounter = 0;
+        let darkRemainingLeft;
+
+        function lightMode() {
+            if(darkCounter){
+                console.log()
+            }
+        }
+       
+        function darkMode() {
+            if(darkRemainingLeft == 1){
+                info.textContent = "JATAH DARK MODE ANDA SUDAH HABIS";
+                mode.style.display = "none";
+                home.textContent = "RESTART";
+                return;
+            }
+
+            darkCounter += 1;
+            darkRemainingLeft = darkLimit - darkCounter;
+
+            // render info 
+            info.textContent = `Dark mode dipakai ${darkCounter}x, Tersisa ${darkRemainingLeft}`;
+
+            body.classList.toggle("dark");
+        }
+
+        function reRender() {
+            location.reload();
+        }
+    </script>
+</body>
+</html>
